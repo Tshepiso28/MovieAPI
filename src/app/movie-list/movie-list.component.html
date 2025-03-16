@@ -10,7 +10,7 @@
    -->
    <div class="movie-grid">
     @for (movie of movies; track movie.id) {
-      <a [routerLink]="['/movie', movie.id]" class="movie-link">
+      <a routerLink="/movie/{{movie.id}}" class="movie-link">
         <div class="movie-card">
           @if (movie.poster_path) {
             <img

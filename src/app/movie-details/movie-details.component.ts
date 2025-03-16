@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService, MovieDetails } from '../services/movie.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { DecimalPipe } from '@angular/common'; // For rating formatting
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, DecimalPipe],
+  imports: [CommonModule, DecimalPipe, RouterModule],
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.css']
 })
@@ -21,26 +21,26 @@ export class MovieDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const movieId = this.route.snapshot.params['id'];
-    console.log('Movie ID:', movieId); // Debug: Check if the ID is correct
-    if (isNaN(movieId)) {
-      this.errorMessage = 'Invalid movie ID';
-      this.isLoading = false;
-      return;
-    }
+    // const movieId = this.route.snapshot.params['id'];
+    // console.log('Movie ID:', movieId);
+    // if (isNaN(movieId)) {
+    //   this.errorMessage = 'Invalid movie ID';
+    //   this.isLoading = false;
+    //   return;
+    // }
   
     
-    this.movieService.getMovieDetails(movieId).subscribe({
-      next: (response) => {
-        console.log('Movie details:', response); // Debug: Check the API response
-        this.movie = response;
-        this.isLoading = false;
-      },
-      error: (err) => {
-        console.error('Error fetching movie details:', err); // Debug: Check for errors
-        this.errorMessage = 'Failed to load movie details';
-        this.isLoading = false;
-      }
-    });
+    // this.movieService.getMovieDetails(movieId).subscribe({
+    //   next: (response) => {
+    //     console.log('Movie details:', response)
+    //     this.movie = response;
+    //     this.isLoading = false;
+    //   },
+    //   error: (err) => {
+    //     console.error('Error fetching movie details:', err);
+    //     this.errorMessage = 'Failed to load movie details';
+    //     this.isLoading = false;
+    //   }
+    // });
   }
 }
