@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError, RouterOutlet } from '@angular/router';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { MovieListComponent } from './movie-list/movie-list.component';
+import { NavbarComponent } from './navbar/navbar.component';
 @Component({
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MovieDetailsComponent, MovieListComponent, NavbarComponent],
   selector: 'app-root',
   templateUrl:'app.component.html'
 })

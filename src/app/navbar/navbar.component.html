@@ -1,1 +1,28 @@
-<p>navbar works!</p>
+<nav class="navbar">
+    <div class="navbar-logo">
+      <i class="fa-solid fa-video"></i>
+      <h3><span class="navbar-name">W</span>atch<span class="navbar-name">M</span>ax</h3>
+    </div>
+    <div class="nav-search">
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/about">About</a></li>
+    <input 
+      type="text" 
+      placeholder="Search movies..." 
+      [(ngModel)]="searchQuery"
+      (keyup.enter)="onSearch()"
+    />
+    <button (click)="onSearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+</nav>
+<div class="search-results" *ngIf="searchResults.length">
+    <h2>{{ resValue }}</h2>
+    <ul class="movie-grid">
+      <li *ngFor="let movie of searchResults" (click)="viewMovieDetails(movie.id)">
+        <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" alt="{{ movie.title }}" />
+        <span>{{ movie.title }}</span>
+      </li>
+    </ul>
+  </div>
+  
